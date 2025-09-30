@@ -2,10 +2,12 @@ import Navigation from "./Components/Navigation";
 import Footer from "./Components/Footer";
 import "./index.css";
 import Homepage from "./Pages/Homepage";
+import SpaceBackground from "./Components/SpaceBackground";
 
 const App = () => {
   return (
     <>
+      <SpaceBackground />
       {/* Main Navigation ------------------------------------*/}
       {/* ---------------------------------------------------*/}
       {/* ---------------------------------------------------*/}

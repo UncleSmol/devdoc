@@ -160,7 +160,6 @@
 
 body,
 html {
-  background-color: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-primary);
   font-size: var(--text-base);
