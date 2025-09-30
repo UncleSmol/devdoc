@@ -115,10 +115,10 @@ const Homepage = () => {
             </h1>
 
             <p className="HeroDescription">
-              I am a passionate, self-taught **Frontend Developer** focused on
+              I am a passionate, self-taught Frontend Developer focused on
               building impactful digital solutions. I specialize in captivating
-              user interfaces using **React, Framer Motion, and GSAP**,
-              committed to pixel-perfect execution.
+              user interfaces using React, Framer Motion, and GSAP, committed to
+              pixel-perfect execution.
             </p>
 
             <div className="HeroActions">
@@ -212,8 +212,8 @@ const Homepage = () => {
           <motion.div className="SectionHeader" variants={itemVariants}>
             <h2>Technical Expertise & Toolkit</h2>
             <p>
-              My stack is built around modern frontend technologies and effective
-              development practices.
+              My stack is built around modern frontend technologies and
+              effective development practices.
             </p>
           </motion.div>
 
@@ -262,9 +262,9 @@ const Homepage = () => {
             }}
           >
             <p style={{ color: "var(--color-text-secondary)" }}>
-              **Project Component Coming Soon:** This section is ready to render
-              your detailed `FeaturedProjects` component from your database source
-              when integrated.
+              Project Component Coming Soon: This section is ready to render
+              your detailed `FeaturedProjects` component from your database
+              source when integrated.
             </p>
           </motion.div>
 
