@@ -33,7 +33,7 @@ const navItemArr = [
   {
     navItemIdKey: 4,
     navItemLabel: "Connect",
-    navItemPath: "/",
+    navItemPath: "connect-with-me",
     navItemIcon: ConnectWithUSPageIcon,
     navItemAlt: "Connect With Us Page Icon",
   },

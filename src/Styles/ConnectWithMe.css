@@ -1,0 +1,326 @@
+/* ConnectWithMe Styles */
+.ConnectWithMe {
+  min-height: 100vh;
+}
+
+.LocationInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-top: var(--space-4);
+}
+
+.LocationInfo svg {
+  color: var(--color-accent-primary);
+}
+
+/* Contact Methods Section */
+.ContactMethodsSection {
+  padding: var(--space-16) 0;
+}
+
+.ContactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.ContactCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.ContactCard:hover {
+  border-color: var(--color-accent-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ContactIcon {
+  flex-shrink: 0;
+}
+
+.ContactInfo {
+  flex: 1;
+}
+
+.ContactInfo h3 {
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--text-lg);
+}
+
+.ContactValue {
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-medium);
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--text-base);
+}
+
+.ContactDescription {
+  color: var(--color-text-muted);
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.LinkArrow {
+  color: var(--color-text-muted);
+  transition: color var(--transition-base);
+}
+
+.ContactCard:hover .LinkArrow {
+  color: var(--color-accent-primary);
+}
+
+/* Quick Actions Section */
+.QuickActionsSection {
+  padding: var(--space-16) 0;
+  background: var(--color-surface);
+}
+
+.ActionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+}
+
+.ActionCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+}
+
+.ActionCard.primary {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-primary),
+    var(--color-accent-secondary)
+  );
+  color: var(--color-neutral-900);
+}
+
+.ActionCard.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.ActionCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-primary);
+}
+
+.ActionIcon {
+  flex-shrink: 0;
+}
+
+.ActionInfo {
+  flex: 1;
+}
+
+.ActionInfo h3 {
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--text-lg);
+}
+
+.ActionButton {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
+  opacity: 0.9;
+}
+
+/* Social Section */
+.SocialSection {
+  padding: var(--space-16) 0;
+}
+
+.SocialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+.SocialCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+}
+
+.SocialCard:hover {
+  border-color: var(--color-accent-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.SocialIcon {
+  color: var(--color-accent-primary);
+  flex-shrink: 0;
+}
+
+.SocialInfo {
+  flex: 1;
+}
+
+.SocialInfo h3 {
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--text-lg);
+}
+
+.SocialHandle {
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-medium);
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--text-sm);
+}
+
+.SocialDescription {
+  color: var(--color-text-muted);
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+/* CTA Section */
+.CTASection {
+  padding: var(--space-16) 0;
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.CTAContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.CTAIcon {
+  color: var(--color-accent-primary);
+}
+
+.CTAContent h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.CTAContent p {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-6) 0;
+}
+
+.CTAButtons {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--space-8);
+}
+
+.ResponseTime {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ResponseBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin: 0 auto;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.ResponseTime p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ContactGrid,
+  .ActionsGrid,
+  .SocialGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ContactCard,
+  .SocialCard {
+    padding: var(--space-4);
+  }
+
+  .CTAButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ActionCard {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .ContactMethodsSection,
+  .QuickActionsSection,
+  .SocialSection,
+  .CTASection {
+    padding: var(--space-12) 0;
+  }
+
+  .ContactCard,
+  .SocialCard,
+  .ActionCard {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+
+  .ContactInfo,
+  .SocialInfo,
+  .ActionInfo {
+    text-align: center;
+  }
+
+  .LinkArrow {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+  }
+}

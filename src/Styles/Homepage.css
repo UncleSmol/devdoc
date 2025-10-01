@@ -477,49 +477,142 @@
   margin: 0;
 }
 
-/* Mobile Responsive Styles */
+/* Improved Mobile Responsive Styles */
 @media (max-width: 768px) {
+  .HeroSection {
+    padding: var(--space-12) 0;
+    min-height: auto;
+  }
+
   .HeroContent {
     grid-template-columns: 1fr;
     gap: var(--space-8);
     text-align: center;
+    padding: 0 var(--space-4);
   }
 
   .HeroTitle {
     font-size: var(--text-3xl);
+    line-height: var(--leading-snug);
+  }
+
+  .HeroDescription {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
   }
 
   .HeroActions {
     justify-content: center;
-  }
-
-  .StatsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .ProjectsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .Container {
-    padding: 0 var(--space-4);
-  }
-}
-
-@media (max-width: 480px) {
-  .StatsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .HeroActions {
     flex-direction: column;
-    align-items: center;
+    gap: var(--space-3);
   }
 
   .Button {
     width: 100%;
     justify-content: center;
   }
+
+  .CodeWindow {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .CodeContent {
+    padding: var(--space-4);
+    font-size: var(--text-xs);
+    overflow-x: auto;
+  }
+
+  .CodeContent pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .Badge {
+    align-self: center;
+    font-size: var(--text-xs);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .SocialProof {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .HeroSection {
+    padding: var(--space-8) 0;
+  }
+
+  .HeroTitle {
+    font-size: var(--text-2xl);
+  }
+
+  .HeroDescription {
+    font-size: var(--text-sm);
+  }
+
+  .StatsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .StatCard {
+    padding: var(--space-4);
+  }
+
+  .CodeContent {
+    font-size: var(--text-xs);
+    padding: var(--space-3);
+  }
+
+  /* Ensure no horizontal overflow */
+  .Homepage {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .Container {
+    padding: 0 var(--space-3);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .HeroContent {
+    padding: 0 var(--space-2);
+  }
+
+  .HeroTitle {
+    font-size: var(--text-xl);
+  }
+
+  .CodeWindow {
+    border-radius: var(--radius-lg);
+  }
+
+  .CodeContent pre {
+    font-size: 10px;
+  }
+}
+
+/* Fix for very specific overflow issues */
+.HeroVisual {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.CodeWindow {
+  max-width: 100%;
+  word-break: break-all;
+}
+
+/* Ensure the code content doesn't cause horizontal scroll */
+.CodeContent pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 /* Reduced Motion Support */

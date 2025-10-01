@@ -206,7 +206,7 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Skills Section (Updated to remove progress bars) */}
+      {/* Skills Section */}
       <section className="SkillsSection">
         <div className="Container">
           <motion.div className="SectionHeader" variants={itemVariants}>
@@ -233,7 +233,7 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Projects Section (Modified to show placeholder) */}
+      {/* Projects Section */}
       <section className="ProjectsSection">
         <div className="Container">
           <motion.div className="SectionHeader" variants={itemVariants}>
