@@ -32,16 +32,3 @@ export const projectsAPI = {
     }
   },
 };
-
-// Simple test function - FIXED EXPORT NAME
-export const testProjectsAPI = async () => {
-  try {
-    const projects = await projectsAPI.getAllProjects();
-    return {
-      success: true,
-      message: `Connected successfully! Found ${projects.length} projects`,
-    };
-  } catch (error) {
-    return { success: false, error: error.message };
-  }
-};
