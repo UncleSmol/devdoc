@@ -1,176 +1,407 @@
-/* WorkWithMe Styles */
+/* WorkWithMe Component Styles */
 .WorkWithMe {
   min-height: 100vh;
+  background: var(--color-background);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Benefits List */
-.BenefitsList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-3);
-  margin-top: var(--space-6);
+.Container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-8);
 }
 
-.BenefitItem {
+/* Hero Section */
+.HeroSection {
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--color-text-secondary);
-  font-size: var(--text-sm);
+  padding: var(--space-20) 0;
+  position: relative;
 }
 
-.BenefitItem svg {
-  color: var(--color-accent-primary);
-  flex-shrink: 0;
-}
-
-/* Component Placeholders */
-.ComponentPlaceholder {
+.HeroContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 2px dashed var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
   text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-.PlaceholderIcon {
-  color: var(--color-accent-primary);
-  margin-bottom: var(--space-4);
-}
-
-.ComponentPlaceholder h3 {
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-2) 0;
-  font-size: var(--text-xl);
-}
-
-.ComponentPlaceholder p {
-  color: var(--color-text-muted);
-  margin: 0;
-  font-size: var(--text-sm);
-}
-
-/* Sections */
-.ShowcaseSection {
-  padding: var(--space-16) 0;
-}
-
-.PricingSection {
-  padding: var(--space-16) 0;
-  background: var(--color-surface);
-}
-
-.BookingSection {
-  padding: var(--space-16) 0;
-}
-
-.ProcessSection {
-  padding: var(--space-16) 0;
-  background: var(--color-surface);
-}
-
-/* Process Steps */
-.ProcessSteps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-8);
-  position: relative;
 }
 
-.ProcessStep {
-  position: relative;
-  text-align: center;
-  padding: var(--space-6);
-  background: rgba(255, 255, 255, 0.03);
+.HeroText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  max-width: 800px;
+}
+
+.Badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
   backdrop-filter: blur(10px);
-  z-index: 1;
 }
 
-.StepNumber {
-  width: 50px;
-  height: 50px;
+.HeroTitle {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.GradientText {
   background: linear-gradient(
     135deg,
     var(--color-accent-primary),
     var(--color-accent-secondary)
   );
-  color: var(--color-neutral-900);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.HeroDescription {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 600px;
+}
+
+.BenefitsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
+  max-width: 600px;
+}
+
+.BenefitItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+}
+
+.PackageCount {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(200, 63, 18, 0.1);
+  border: 1px solid rgba(200, 63, 18, 0.3);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--color-accent-primary);
+}
+
+/* Section Common Styles */
+.ShowcaseSection,
+.PricingSection,
+.BookingSection,
+.ProcessSection,
+.CTASection {
+  padding: var(--space-16) 0;
+  position: relative;
+}
+
+.SectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.SectionHeader h2 {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.SectionHeader p {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Pricing Section */
+.RefreshButton {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  margin-top: var(--space-4);
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+}
+
+.RefreshButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-accent-primary);
+}
+
+/* Pricing Packages Component */
+.ComponentPlaceholder {
+  text-align: center;
+  padding: var(--space-12);
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-2xl);
+  color: var(--color-text-muted);
+}
+
+.ComponentPlaceholder.error {
+  border-color: var(--color-accent-danger);
+  background: rgba(138, 0, 0, 0.1);
+}
+
+.PlaceholderIcon {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.ComponentPlaceholder.error .PlaceholderIcon {
+  color: var(--color-accent-danger);
+}
+
+/* Pricing Grid */
+.packages-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.package-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+  text-align: left;
+}
+
+.package-item:hover {
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--glow-primary);
+  transform: translateY(-4px);
+}
+
+.package-item h4 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.package-item .text-lg {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-primary);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.package-item .text-sm {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin: var(--space-4) 0;
+  line-height: var(--leading-relaxed);
+}
+
+.package-item ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0 0 0;
+}
+
+.package-item li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.package-item li:last-child {
+  border-bottom: none;
+}
+
+/* Process Section */
+.ProcessSteps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-8);
+  position: relative;
+  margin-top: var(--space-12);
+}
+
+.ProcessStep {
+  position: relative;
+  text-align: center;
+  padding: var(--space-8);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  backdrop-filter: blur(10px);
+}
+
+.StepNumber {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-primary),
+    var(--color-accent-secondary)
+  );
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: var(--font-weight-bold);
-  font-size: var(--text-lg);
+  color: var(--color-neutral-900);
   margin: 0 auto var(--space-4) auto;
 }
 
 .ProcessStep h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
   margin: 0 0 var(--space-2) 0;
-  font-size: var(--text-lg);
 }
 
 .ProcessStep p {
-  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
   margin: 0;
-  font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
 }
 
 .StepConnector {
   position: absolute;
-  top: 25px;
-  right: -30px;
-  width: 30px;
+  top: 50%;
+  right: -var(--space-4);
+  width: var(--space-8);
   height: 2px;
   background: var(--color-border);
-  z-index: 0;
+  transform: translateY(-50%);
 }
 
 /* CTA Section */
 .CTASection {
-  padding: var(--space-16) 0;
-  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(200, 63, 18, 0.1),
+    rgba(255, 242, 135, 0.05)
+  );
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .CTAContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-4);
+  text-align: center;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .CTAIcon {
   color: var(--color-accent-primary);
+  margin-bottom: var(--space-6);
 }
 
 .CTAContent h2 {
   font-size: var(--text-3xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin: 0;
+  margin: 0 0 var(--space-4) 0;
 }
 
 .CTAContent p {
   font-size: var(--text-lg);
-  color: var(--color-text-muted);
-  margin: 0 0 var(--space-6) 0;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-8) 0;
+  line-height: var(--leading-relaxed);
+}
+
+/* Buttons */
+.Button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: var(--text-base);
+}
+
+.PrimaryButton {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-primary),
+    var(--color-accent-secondary)
+  );
+  color: var(--color-neutral-900);
+}
+
+.PrimaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-primary);
+}
+
+.Large {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-lg);
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .HeroSection {
+    padding: var(--space-12) 0;
+    min-height: auto;
+  }
+
+  .HeroTitle {
+    font-size: var(--text-3xl);
+  }
+
+  .HeroDescription {
+    font-size: var(--text-base);
+  }
+
   .BenefitsList {
     grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .packages-list {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
 
   .ProcessSteps {
@@ -182,17 +413,10 @@
     display: none;
   }
 
-  .ProcessStep {
-    padding: var(--space-4);
+  .SectionHeader h2 {
+    font-size: var(--text-3xl);
   }
 
-  .ComponentPlaceholder {
-    min-height: 200px;
-    padding: var(--space-6);
-  }
-}
-
-@media (max-width: 480px) {
   .ShowcaseSection,
   .PricingSection,
   .BookingSection,
@@ -201,9 +425,58 @@
     padding: var(--space-12) 0;
   }
 
-  .StepNumber {
-    width: 40px;
-    height: 40px;
-    font-size: var(--text-base);
+  .package-item {
+    padding: var(--space-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .HeroSection {
+    padding: var(--space-8) 0;
+  }
+
+  .HeroTitle {
+    font-size: var(--text-2xl);
+  }
+
+  .ProcessStep {
+    padding: var(--space-6);
+  }
+
+  .packages-list {
+    grid-template-columns: 1fr;
+  }
+
+  .package-item {
+    padding: var(--space-4);
+  }
+
+  .package-item h4 {
+    font-size: var(--text-lg);
+  }
+
+  .package-item .text-lg {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .WorkWithMe * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Animation for loading spinner */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

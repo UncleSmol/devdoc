@@ -1,17 +1,78 @@
 import React from "react";
+import "../Styles/WorkWithMe.css";
 import { motion } from "framer-motion";
-import { Star, Calendar, Zap, ArrowRight, CheckCircle } from "lucide-react";
+import {
+  Star,
+  Calendar,
+  Zap,
+  ArrowRight,
+  CheckCircle,
+  AlertCircle,
+  Loader,
+} from "lucide-react";
+import { usePricingPackages } from "../hooks/usePricingPackages";
+import FeaturedProjects from "../Components/common/FeaturedProjects";
 
 // These will be imported from your external components
-const PricingPackages = () => (
-  <div className="ComponentPlaceholder">
-    <div className="PlaceholderIcon">
-      <Star size={32} />
+const PricingPackages = ({ packages, loading, error }) => {
+  if (loading) {
+    return (
+      <div className="ComponentPlaceholder">
+        <div className="PlaceholderIcon">
+          <Loader size={32} className="animate-spin" />
+        </div>
+        <h3>Loading Pricing Packages...</h3>
+        <p>Fetching available plans</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="ComponentPlaceholder error">
+        <div className="PlaceholderIcon">
+          <AlertCircle size={32} />
+        </div>
+        <h3>Error Loading Packages</h3>
+        <p>{error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="ComponentPlaceholder">
+      <div className="PlaceholderIcon">
+        <Star size={32} />
+      </div>
+      <h3>Pricing Packages</h3>
+      <p>Found {packages?.length || 0} packages</p>
+      {/* You can now map through packages and display them */}
+      {packages && packages.length > 0 && (
+        <div className="packages-list mt-4">
+          {packages.map((pkg) => (
+            <div key={pkg.id} className="package-item p-4 border rounded mb-2">
+              <h4 className="font-bold">{pkg.name}</h4>
+              <p className="text-lg">
+                {pkg.price} {pkg.currency}
+              </p>
+              <p className="text-sm text-gray-600">{pkg.description}</p>
+              {pkg.features && (
+                <ul className="mt-2">
+                  {pkg.features.map((feature, index) => (
+                    <li key={index} className="text-sm flex items-center gap-2">
+                      <CheckCircle size={14} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-    <h3>Pricing Packages</h3>
-    <p>Component loading from ../components/common/PricingPackages</p>
-  </div>
-);
+  );
+};
 
 const BookingForm = () => (
   <div className="ComponentPlaceholder">
@@ -23,17 +84,10 @@ const BookingForm = () => (
   </div>
 );
 
-const FeaturedProjectsShowcase = () => (
-  <div className="ComponentPlaceholder">
-    <div className="PlaceholderIcon">
-      <Zap size={32} />
-    </div>
-    <h3>Featured Projects</h3>
-    <p>Component loading from ../components/common/FeaturedProjectsShowcase</p>
-  </div>
-);
-
 const WorkWithMe = () => {
+  const { packages, loading, error, refetch, fetchAvailablePackages } =
+    usePricingPackages();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -64,6 +118,9 @@ const WorkWithMe = () => {
     "Ongoing support & maintenance",
     "Transparent communication",
   ];
+
+  // Filter available packages
+  const availablePackages = packages?.filter((pkg) => pkg.is_available) || [];
 
   return (
     <motion.div
@@ -105,6 +162,16 @@ const WorkWithMe = () => {
                   </motion.div>
                 ))}
               </div>
+
+              {/* Show package count in hero section */}
+              {!loading && availablePackages.length > 0 && (
+                <motion.div className="PackageCount" variants={itemVariants}>
+                  <CheckCircle size={16} />
+                  <span>
+                    {availablePackages.length} pricing packages available
+                  </span>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         </div>
@@ -114,12 +181,12 @@ const WorkWithMe = () => {
       <section className="ShowcaseSection">
         <div className="Container">
           <motion.div className="SectionHeader" variants={itemVariants}>
-            <h2>Why Work With Me?</h2>
+            <h2>Featured Work</h2>
             <p>See examples of what we can build together</p>
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <FeaturedProjectsShowcase />
+            <FeaturedProjects />
           </motion.div>
         </div>
       </section>
@@ -130,10 +197,24 @@ const WorkWithMe = () => {
           <motion.div className="SectionHeader" variants={itemVariants}>
             <h2>Transparent Pricing</h2>
             <p>Choose the package that fits your needs and budget</p>
+            {!loading && (
+              <motion.button
+                className="RefreshButton"
+                onClick={refetch}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Refresh Packages
+              </motion.button>
+            )}
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <PricingPackages />
+            <PricingPackages
+              packages={availablePackages}
+              loading={loading}
+              error={error}
+            />
           </motion.div>
         </div>
       </section>

@@ -12,28 +12,140 @@ import {
   FileText,
   MessageSquare,
   MapPin,
+  Rocket,
+  Sparkles,
+  Zap,
 } from "lucide-react";
 
 const ConnectWithMe = () => {
-  const containerVariants = {
+  // 3D Animation variants - Consistent with MyWorkPage
+  const container3DVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
       },
     },
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+  const item3DVariants = {
+    hidden: {
+      opacity: 0,
+      rotateX: -90,
+      y: 60,
+      scale: 0.8,
+    },
     visible: {
-      y: 0,
       opacity: 1,
+      rotateX: 0,
+      y: 0,
+      scale: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
+        stiffness: 80,
+        damping: 15,
+        duration: 0.8,
       },
+    },
+    hover: {
+      rotateY: 15,
+      rotateX: -5,
+      y: -8,
+      scale: 1.05,
+      z: 30,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 12,
+      },
+    },
+    tap: {
+      rotateY: 0,
+      rotateX: 3,
+      scale: 0.95,
+      y: -2,
+      transition: {
+        type: "spring",
+        stiffness: 500,
+        damping: 15,
+      },
+    },
+  };
+
+  const icon3DVariants = {
+    normal: {
+      rotateZ: 0,
+      scale: 1,
+      y: 0,
+    },
+    hover: {
+      rotateZ: 15,
+      scale: 1.2,
+      y: -3,
+      transition: {
+        type: "spring",
+        stiffness: 600,
+        damping: 8,
+      },
+    },
+  };
+
+  const text3DVariants = {
+    normal: {
+      y: 0,
+      opacity: 0.8,
+      rotateX: 0,
+    },
+    hover: {
+      y: 3,
+      opacity: 1,
+      rotateX: 3,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+      },
+    },
+  };
+
+  const sectionContainer3DVariants = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+      rotateX: -15,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        type: "spring",
+        stiffness: 70,
+        damping: 18,
+        duration: 0.8,
+      },
+    },
+  };
+
+  const simpleButtonVariants = {
+    normal: {
+      scale: 1,
+      y: 0,
+    },
+    hover: {
+      scale: 1.05,
+      y: -2,
+      boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10,
+      },
+    },
+    tap: {
+      scale: 0.95,
+      y: 0,
     },
   };
 
@@ -66,7 +178,7 @@ const ConnectWithMe = () => {
       icon: <Calendar size={24} />,
       title: "Schedule a Call",
       value: "Book a meeting",
-      link: "#", // Add your Calendly or meeting link here
+      link: "#",
       description: "15-30 minute introductory call",
       color: "var(--color-accent-secondary)",
     },
@@ -83,8 +195,8 @@ const ConnectWithMe = () => {
     {
       icon: <Github size={24} />,
       name: "GitHub",
-      handle: "Your GitHub", // Add your GitHub handle
-      link: "https://github.com/your-github-profile", // Update with your GitHub
+      handle: "Your GitHub",
+      link: "https://github.com/your-github-profile",
       description: "Code repositories & projects",
     },
     {
@@ -108,7 +220,7 @@ const ConnectWithMe = () => {
       icon: <FileText size={20} />,
       title: "Download Resume",
       action: "Download PDF",
-      link: "#", // Add your resume PDF link
+      link: "#",
       variant: "primary",
     },
     {
@@ -130,159 +242,563 @@ const ConnectWithMe = () => {
   return (
     <motion.div
       className="ConnectWithMe"
-      variants={containerVariants}
+      variants={container3DVariants}
       initial="hidden"
       animate="visible"
+      style={{
+        transformStyle: "preserve-3d",
+        perspective: "1200px",
+      }}
     >
       {/* Hero Section */}
-      <section className="HeroSection">
+      <motion.section
+        className="HeroSection"
+        variants={sectionContainer3DVariants}
+        initial="hidden"
+        animate="visible"
+        style={{
+          transformStyle: "preserve-3d",
+        }}
+      >
         <div className="Container">
-          <motion.div className="HeroContent" variants={itemVariants}>
-            <div className="HeroText">
-              <motion.div className="Badge" whileHover={{ scale: 1.05 }}>
-                <MessageCircle size={16} />
-                <span>Let's Build Something Amazing Together</span>
+          <motion.div
+            className="HeroContent"
+            variants={container3DVariants}
+            initial="hidden"
+            animate="visible"
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <motion.div
+              className="HeroText"
+              variants={container3DVariants}
+              initial="hidden"
+              animate="visible"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              <motion.div
+                className="Badge"
+                variants={item3DVariants}
+                whileHover="hover"
+                whileTap="tap"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                <motion.div
+                  variants={icon3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  <MessageCircle size={16} />
+                </motion.div>
+                <motion.span
+                  variants={text3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  Let's Build Something Amazing Together
+                </motion.span>
               </motion.div>
 
-              <h1 className="HeroTitle">
+              <motion.h1
+                className="HeroTitle"
+                variants={item3DVariants}
+                whileHover="hover"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
                 Connect With <span className="GradientText">Dev Doc</span>
-              </h1>
+              </motion.h1>
 
-              <p className="HeroDescription">
+              <motion.p
+                className="HeroDescription"
+                variants={item3DVariants}
+                whileHover="hover"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
                 I'm always excited to discuss new opportunities, collaborate on
                 innovative projects, or just chat about technology and
                 development. Whether you're a potential client, fellow
                 developer, or someone interested in my journey - let's talk!
-              </p>
+              </motion.p>
 
-              <div className="LocationInfo">
-                <MapPin size={18} />
-                <span>
+              <motion.div
+                className="LocationInfo"
+                variants={item3DVariants}
+                whileHover="hover"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                <motion.div
+                  variants={icon3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  <MapPin size={18} />
+                </motion.div>
+                <motion.span
+                  variants={text3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
                   Based in Witbank, MP • Open to remote work & relocation
-                </span>
-              </div>
-            </div>
+                </motion.span>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Methods */}
-      <section className="ContactMethodsSection">
+      <motion.section
+        className="ContactMethodsSection"
+        variants={sectionContainer3DVariants}
+        initial="hidden"
+        animate="visible"
+        style={{
+          transformStyle: "preserve-3d",
+        }}
+      >
         <div className="Container">
-          <motion.div className="SectionHeader" variants={itemVariants}>
-            <h2>Direct Contact Channels</h2>
-            <p>Choose the method that works best for you</p>
+          <motion.div
+            className="SectionHeader"
+            variants={item3DVariants}
+            whileHover="hover"
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <motion.h2
+              variants={text3DVariants}
+              initial="normal"
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              Direct Contact Channels
+            </motion.h2>
+            <motion.p
+              variants={text3DVariants}
+              initial="normal"
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              Choose the method that works best for you
+            </motion.p>
           </motion.div>
 
-          <div className="ContactGrid">
+          <motion.div
+            className="ContactGrid"
+            variants={container3DVariants}
+            initial="hidden"
+            animate="visible"
+            style={{
+              transformStyle: "preserve-3d",
+              perspective: "800px",
+            }}
+          >
             {contactMethods.map((method, index) => (
               <motion.a
                 key={index}
                 href={method.link}
                 className="ContactCard"
-                variants={itemVariants}
-                whileHover={{
-                  scale: 1.05,
-                  y: -5,
+                variants={item3DVariants}
+                whileHover="hover"
+                whileTap="tap"
+                style={{
+                  transformStyle: "preserve-3d",
                 }}
-                whileTap={{ scale: 0.95 }}
               >
-                <div className="ContactIcon" style={{ color: method.color }}>
+                <motion.div
+                  className="ContactIcon"
+                  style={{ color: method.color }}
+                  variants={icon3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
                   {method.icon}
-                </div>
+                </motion.div>
                 <div className="ContactInfo">
-                  <h3>{method.title}</h3>
-                  <p className="ContactValue">{method.value}</p>
-                  <p className="ContactDescription">{method.description}</p>
+                  <motion.h3
+                    variants={text3DVariants}
+                    initial="normal"
+                    whileHover="hover"
+                    style={{
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
+                    {method.title}
+                  </motion.h3>
+                  <motion.p
+                    className="ContactValue"
+                    variants={text3DVariants}
+                    initial="normal"
+                    whileHover="hover"
+                    style={{
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
+                    {method.value}
+                  </motion.p>
+                  <motion.p
+                    className="ContactDescription"
+                    variants={text3DVariants}
+                    initial="normal"
+                    whileHover="hover"
+                    style={{
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
+                    {method.description}
+                  </motion.p>
                 </div>
-                <ExternalLink size={18} className="LinkArrow" />
+                <motion.div
+                  variants={icon3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  <ExternalLink size={18} className="LinkArrow" />
+                </motion.div>
               </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Quick Actions */}
-      <section className="QuickActionsSection">
+      <motion.section
+        className="QuickActionsSection"
+        variants={sectionContainer3DVariants}
+        initial="hidden"
+        animate="visible"
+        style={{
+          transformStyle: "preserve-3d",
+        }}
+      >
         <div className="Container">
-          <motion.div className="SectionHeader" variants={itemVariants}>
-            <h2>Quick Actions</h2>
-            <p>Instant access to what you might need</p>
+          <motion.div
+            className="SectionHeader"
+            variants={item3DVariants}
+            whileHover="hover"
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <motion.h2
+              variants={text3DVariants}
+              initial="normal"
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              Quick Actions
+            </motion.h2>
+            <motion.p
+              variants={text3DVariants}
+              initial="normal"
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              Instant access to what you might need
+            </motion.p>
           </motion.div>
 
-          <div className="ActionsGrid">
+          <motion.div
+            className="ActionsGrid"
+            variants={container3DVariants}
+            initial="hidden"
+            animate="visible"
+            style={{
+              transformStyle: "preserve-3d",
+              perspective: "800px",
+            }}
+          >
             {quickActions.map((action, index) => (
               <motion.a
                 key={index}
                 href={action.link}
                 className={`ActionCard ${action.variant}`}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                variants={item3DVariants}
+                whileHover="hover"
+                whileTap="tap"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
               >
-                <div className="ActionIcon">{action.icon}</div>
+                <motion.div
+                  className="ActionIcon"
+                  variants={icon3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  {action.icon}
+                </motion.div>
                 <div className="ActionInfo">
-                  <h3>{action.title}</h3>
-                  <span className="ActionButton">{action.action}</span>
+                  <motion.h3
+                    variants={text3DVariants}
+                    initial="normal"
+                    whileHover="hover"
+                    style={{
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
+                    {action.title}
+                  </motion.h3>
+                  <motion.span
+                    className="ActionButton"
+                    variants={text3DVariants}
+                    initial="normal"
+                    whileHover="hover"
+                    style={{
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
+                    {action.action}
+                  </motion.span>
                 </div>
               </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Social Links */}
-      <section className="SocialSection">
+      <motion.section
+        className="SocialSection"
+        variants={sectionContainer3DVariants}
+        initial="hidden"
+        animate="visible"
+        style={{
+          transformStyle: "preserve-3d",
+        }}
+      >
         <div className="Container">
-          <motion.div className="SectionHeader" variants={itemVariants}>
-            <h2>Follow My Journey</h2>
-            <p>Connect with me across different platforms</p>
+          <motion.div
+            className="SectionHeader"
+            variants={item3DVariants}
+            whileHover="hover"
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <motion.h2
+              variants={text3DVariants}
+              initial="normal"
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              Follow My Journey
+            </motion.h2>
+            <motion.p
+              variants={text3DVariants}
+              initial="normal"
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              Connect with me across different platforms
+            </motion.p>
           </motion.div>
 
-          <div className="SocialGrid">
+          <motion.div
+            className="SocialGrid"
+            variants={container3DVariants}
+            initial="hidden"
+            animate="visible"
+            style={{
+              transformStyle: "preserve-3d",
+              perspective: "800px",
+            }}
+          >
             {socialLinks.map((social, index) => (
               <motion.a
                 key={index}
                 href={social.link}
                 className="SocialCard"
-                variants={itemVariants}
-                whileHover={{
-                  scale: 1.05,
-                  y: -5,
+                variants={item3DVariants}
+                whileHover="hover"
+                whileTap="tap"
+                style={{
+                  transformStyle: "preserve-3d",
                 }}
-                whileTap={{ scale: 0.95 }}
               >
-                <div className="SocialIcon">{social.icon}</div>
+                <motion.div
+                  className="SocialIcon"
+                  variants={icon3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  {social.icon}
+                </motion.div>
                 <div className="SocialInfo">
-                  <h3>{social.name}</h3>
-                  <p className="SocialHandle">{social.handle}</p>
-                  <p className="SocialDescription">{social.description}</p>
+                  <motion.h3
+                    variants={text3DVariants}
+                    initial="normal"
+                    whileHover="hover"
+                    style={{
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
+                    {social.name}
+                  </motion.h3>
+                  <motion.p
+                    className="SocialHandle"
+                    variants={text3DVariants}
+                    initial="normal"
+                    whileHover="hover"
+                    style={{
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
+                    {social.handle}
+                  </motion.p>
+                  <motion.p
+                    className="SocialDescription"
+                    variants={text3DVariants}
+                    initial="normal"
+                    whileHover="hover"
+                    style={{
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
+                    {social.description}
+                  </motion.p>
                 </div>
-                <ExternalLink size={18} className="LinkArrow" />
+                <motion.div
+                  variants={icon3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  <ExternalLink size={18} className="LinkArrow" />
+                </motion.div>
               </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="CTASection">
+      <motion.section
+        className="CTASection"
+        variants={sectionContainer3DVariants}
+        initial="hidden"
+        animate="visible"
+        style={{
+          transformStyle: "preserve-3d",
+        }}
+      >
         <div className="Container">
-          <motion.div className="CTAContent" variants={itemVariants}>
-            <MessageCircle size={48} className="CTAIcon" />
-            <h2>Ready to Start a Conversation?</h2>
-            <p>
+          <motion.div
+            className="CTAContent"
+            variants={container3DVariants}
+            initial="hidden"
+            animate="visible"
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <motion.div
+              className="CTAIcon"
+              variants={item3DVariants}
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              <motion.div
+                variants={icon3DVariants}
+                initial="normal"
+                whileHover="hover"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                <MessageCircle size={48} />
+              </motion.div>
+            </motion.div>
+
+            <motion.h2
+              variants={item3DVariants}
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              Ready to Start a Conversation?
+            </motion.h2>
+
+            <motion.p
+              variants={item3DVariants}
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
               I typically respond within a few hours. Whether you have a project
               in mind, want to discuss collaboration, or just want to connect -
               I'd love to hear from you.
-            </p>
+            </motion.p>
 
-            <div className="CTAButtons">
+            <motion.div
+              className="CTAButtons"
+              variants={container3DVariants}
+              initial="hidden"
+              animate="visible"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
               <motion.a
                 href="mailto:ntsako.khoza@yahoo.com"
                 className="Button PrimaryButton Large"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                variants={simpleButtonVariants}
+                initial="normal"
+                whileHover="hover"
+                whileTap="tap"
               >
                 <Mail size={20} />
                 Send me an Email
@@ -291,24 +807,67 @@ const ConnectWithMe = () => {
               <motion.a
                 href="https://wa.me/27687180502"
                 className="Button SecondaryButton Large"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                variants={simpleButtonVariants}
+                initial="normal"
+                whileHover="hover"
+                whileTap="tap"
               >
                 <MessageCircle size={20} />
                 WhatsApp Message
               </motion.a>
-            </div>
+            </motion.div>
 
-            <motion.div className="ResponseTime" variants={itemVariants}>
-              <div className="ResponseBadge">
-                <span>⚡</span>
-                <span>Quick Response Guaranteed</span>
-              </div>
-              <p>Usually reply within 2-4 hours during business days</p>
+            <motion.div
+              className="ResponseTime"
+              variants={item3DVariants}
+              whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              <motion.div
+                className="ResponseBadge"
+                variants={item3DVariants}
+                whileHover="hover"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                <motion.span
+                  variants={icon3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  ⚡
+                </motion.span>
+                <motion.span
+                  variants={text3DVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  Quick Response Guaranteed
+                </motion.span>
+              </motion.div>
+              <motion.p
+                variants={text3DVariants}
+                initial="normal"
+                whileHover="hover"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                Usually reply within 2-4 hours during business days
+              </motion.p>
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
     </motion.div>
   );
 };
